@@ -27,7 +27,7 @@ class RatingApiController extends Controller
 
     public function store(Request $request, $id)
     {
-    Log::info('User ID: ' . auth()->id());
+    Log::info('User ID: ' . auth()->user());
 
     $validatedData = $request->validate([
         'rating_value' => 'required|integer|min:1|max:5',
