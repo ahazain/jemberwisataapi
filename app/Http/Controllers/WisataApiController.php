@@ -32,6 +32,9 @@ class WisataApiController extends Controller
             'jenis_wisata_id' => 'required|integer|exists:jenis_wisata,id',
             'deskripsi' => 'nullable|string',
             'alamat' => 'nullable|string|max:255',
+            'latitude' => 'nullable|string|max:255',
+            'longitude' => 'nullable|string|max:255',
+            
         ]);
 
         // Menambahkan ID pengguna (admin) ke dalam data yang divalidasi
