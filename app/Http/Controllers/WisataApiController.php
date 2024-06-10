@@ -56,6 +56,8 @@ class WisataApiController extends Controller
             'jenis_wisata_id' => 'integer|exists:jenis_wisata,id',
             'deskripsi' => 'nullable|string',
             'alamat' => 'nullable|string|max:255',
+            'latitude' => 'nullable|string|max:255',
+            'longitude' => 'nullable|string|max:255',
              
          ]);
          $validatedData['id_admin'] = Auth::id();
