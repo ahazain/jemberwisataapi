@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string('gambar', 500)->collation('utf8mb4_general_ci');
             $table->text('deskripsi')->nullable()->collation('utf8mb4_general_ci');
             $table->string('alamat', 255)->nullable()->collation('utf8mb4_general_ci');
-            $table->unsignedBigInteger('id_admin')->nullable();
             $table->timestamps();
         });
     }

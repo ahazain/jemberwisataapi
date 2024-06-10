@@ -9,7 +9,7 @@ class Rating extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['wisata_id', 'rating_value'];
+    protected $guarded = ['id'];
     protected $table = 'rating';
 
     public function wisata()

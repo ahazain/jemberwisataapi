@@ -4,13 +4,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Rating;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
 
 class RatingApiController extends Controller
 {
     public function __construct()
     {
         // Terapkan middleware hanya pada metode store, update, dan destroy
-        $this->middleware('auth:api', ['except' => ['index', 'show']]);
+        $this->middleware('auth:api', ['except' => ['index', 'show', 'store']]);
     }
 
     public function index($id)
@@ -27,20 +28,21 @@ class RatingApiController extends Controller
 
     public function store(Request $request, $id)
     {
-    Log::info('User ID: ' . auth()->user());
+        Log::info('User ID: ' . auth()->user());
 
-    $validatedData = $request->validate([
-        'rating_value' => 'required|integer|min:1|max:5',
-    ]);
+        $validatedData = $request->validate([
+            'rating_value' => 'required|integer|min:1|max:5',
+        ]);
 
-    $validatedData['wisata_id'] = $id;
-    $validatedData['user_id'] = auth()->id();
+        $validatedData['wisata_id'] = $id;
+        $validatedData['user_id'] = auth()->id();
+        $validatedData['id_admin'] = Auth::id();
 
-    // Log::info('Validated Data: ', $validatedData); // Tambahkan ini untuk debugging json(auth()->user());
+        // Log::info('Validated Data: ', $validatedData); // Tambahkan ini untuk debugging json(auth()->user());
 
-    $rating = Rating::create($validatedData);
+        $rating = Rating::create($validatedData);
 
-    return response()->json(['message' => 'Rating berhasil ditambahkan', 'data' => $rating], 201);
+        return response()->json(['message' => 'Rating berhasil ditambahkan', 'data' => $rating], 201);
     }
 
 
