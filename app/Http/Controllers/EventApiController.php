@@ -24,7 +24,7 @@ class EventApiController extends Controller
         $validatedData['id_admin'] = Auth::id();
         $event = Event::create($validatedData);
     
-        return response()->json(['message' => 'Data acara berhasil ditambahkan', 'data' => $event], 201);
+        return response()->json(['message' => 'Data acara berhasil ditambahkan', 'data' => $event], 200);
     }
     
     public function update(Request $request, $id) {
