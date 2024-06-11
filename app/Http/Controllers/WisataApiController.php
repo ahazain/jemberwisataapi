@@ -64,7 +64,7 @@ class WisataApiController extends Controller
          $wisata->update($validatedData);
          
      
-         return response()->json(['message' => 'Data wisata berhasil diperbarui', 'data' => $wisata], 200);
+         return response()->json(['message' => 'Data wisata berhasil diperbarui', 'data' => $wisata], 201);
      }
  
      public function destroy($id) {
@@ -78,7 +78,7 @@ class WisataApiController extends Controller
             // Hapus data wisata
             $wisata->delete();
          
-            return response()->json(['message' => 'Data acara berhasil dihapus']);
+            return response()->json(['message' => 'Data wisata berhasil dihapus']);
         } catch (\Exception $e) {
             // Tangani jika ada kesalahan saat menghapus data
             return response()->json(['error' => 'Gagal menghapus data acara: ' . $e->getMessage()], 500);
