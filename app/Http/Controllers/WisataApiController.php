@@ -40,10 +40,9 @@ class WisataApiController extends Controller
         // Menambahkan ID pengguna (admin) ke dalam data yang divalidasi
         $validatedData['id_admin'] = Auth::id();
 
-        Wisata::create($validatedData);
+       $wisata = Wisata::create($validatedData);
 
-        return redirect()->route('wisata.index')
-            ->with('success', 'Wisata berhasil ditambahkan.');
+        return response()->json(['message' => 'Data acara berhasil ditambahkan', 'data' => $wisata], 200);
     }
 
     
