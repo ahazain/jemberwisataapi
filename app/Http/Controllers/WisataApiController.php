@@ -64,7 +64,7 @@ class WisataApiController extends Controller
          $wisata->update($validatedData);
          
      
-         return response()->json(['message' => 'Data wisata berhasil diperbarui', 'data' => $wisata], 201);
+         return response()->json(['message' => 'Data wisata berhasil diperbarui', 'data' => $wisata], 200);
      }
  
      public function destroy($id) {
