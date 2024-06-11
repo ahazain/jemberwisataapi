@@ -42,7 +42,7 @@ class WisataApiController extends Controller
 
        $wisata = Wisata::create($validatedData);
 
-        return response()->json(['message' => 'Data acara berhasil ditambahkan', 'data' => $wisata], 200);
+        return response()->json(['message' => 'Data Wisata berhasil ditambahkan', 'data' => $wisata], 200);
     }
 
     
